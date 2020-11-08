@@ -1,3 +1,3 @@
 # StarWarsAPI
 
-A description of this package.
+See [API documentation](https://swapi.dev/documentation) for details.
