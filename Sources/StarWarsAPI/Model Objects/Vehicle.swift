@@ -25,6 +25,17 @@ public struct Vehicle {
     public let vehicleClass: String
 }
 
+extension Vehicle: Hashable, Equatable {
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(reference.url)
+    }
+    
+    public static func == (lhs: Vehicle, rhs: Vehicle) -> Bool {
+        lhs.reference.url == rhs.reference.url
+    }
+}
+
 // ---------------------------------------------------------------------------
 // MARK: - Codable
 // ---------------------------------------------------------------------------

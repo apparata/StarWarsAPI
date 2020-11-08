@@ -23,6 +23,17 @@ public struct Film {
     public let vehicles: [APIReference<Vehicle>]
 }
 
+extension Film: Hashable, Equatable {
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(reference.url)
+    }
+    
+    public static func == (lhs: Film, rhs: Film) -> Bool {
+        lhs.reference.url == rhs.reference.url
+    }
+}
+
 // ---------------------------------------------------------------------------
 // MARK: - Codable
 // ---------------------------------------------------------------------------

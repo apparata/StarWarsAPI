@@ -23,6 +23,17 @@ public struct Planet {
     public let reference: APIReference<Planet>
 }
 
+extension Planet: Hashable, Equatable {
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(reference.url)
+    }
+    
+    public static func == (lhs: Planet, rhs: Planet) -> Bool {
+        lhs.reference.url == rhs.reference.url
+    }
+}
+
 // ---------------------------------------------------------------------------
 // MARK: - Codable
 // ---------------------------------------------------------------------------

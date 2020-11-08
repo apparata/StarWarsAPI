@@ -24,6 +24,17 @@ public struct Species {
     public let reference: APIReference<Species>
 }
 
+extension Species: Hashable, Equatable {
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(reference.url)
+    }
+    
+    public static func == (lhs: Species, rhs: Species) -> Bool {
+        lhs.reference.url == rhs.reference.url
+    }
+}
+
 // ---------------------------------------------------------------------------
 // MARK: - Codable
 // ---------------------------------------------------------------------------

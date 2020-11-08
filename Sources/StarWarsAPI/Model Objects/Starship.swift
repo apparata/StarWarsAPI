@@ -27,6 +27,17 @@ public struct Starship {
     public let reference: APIReference<Starship>
 }
 
+extension Starship: Hashable, Equatable {
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(reference.url)
+    }
+    
+    public static func == (lhs: Starship, rhs: Starship) -> Bool {
+        lhs.reference.url == rhs.reference.url
+    }
+}
+
 // ---------------------------------------------------------------------------
 // MARK: - Codable
 // ---------------------------------------------------------------------------

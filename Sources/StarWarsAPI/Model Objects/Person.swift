@@ -25,6 +25,18 @@ public struct Person {
     public let vehicles: [APIReference<Vehicle>]
 }
 
+
+extension Person: Hashable, Equatable {
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(reference.url)
+    }
+    
+    public static func == (lhs: Person, rhs: Person) -> Bool {
+        lhs.reference.url == rhs.reference.url
+    }
+}
+
 // ---------------------------------------------------------------------------
 // MARK: - Codable
 // ---------------------------------------------------------------------------
