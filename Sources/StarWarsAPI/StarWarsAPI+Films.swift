@@ -16,11 +16,11 @@ extension StarWarsAPI {
         getPage(after: page)
     }
     
-    public func searchFilms(title: String) -> AnyPublisher<[Film], Error> {
+    public func searchFilms(title: String) -> AnyPublisher<APIPage<Film>, Error> {
         getResource(at: url(.films, ["search": title]))
     }
     
-    public func getFilm(id: Int) -> AnyPublisher<Film, Error> {
+    public func getFilm(id: FilmID) -> AnyPublisher<Film, Error> {
         getResource(at: url(.films, resource: id))
     }
     

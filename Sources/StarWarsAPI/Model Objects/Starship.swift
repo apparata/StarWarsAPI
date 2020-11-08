@@ -1,6 +1,8 @@
 
 import Foundation
 
+public typealias StarshipID = Int
+
 ///
 /// See https://swapi.dev/documentation#starships for details.
 ///

@@ -1,6 +1,8 @@
 
 import Foundation
 
+public typealias PersonID = Int
+
 ///
 /// See https://swapi.dev/documentation#people for details.
 ///

@@ -1,6 +1,8 @@
 
 import Foundation
 
+public typealias FilmID = Int
+
 ///
 /// See https://swapi.dev/documentation#films for details.
 ///

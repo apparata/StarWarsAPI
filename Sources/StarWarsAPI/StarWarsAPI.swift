@@ -13,6 +13,8 @@ public enum StarWarsAPIError: Error {
 ///
 public final class StarWarsAPI {
     
+    public var isLogResponseDataEnabled: Bool = false
+    
     enum Endpoint: String {
         case films
         case people
@@ -49,7 +51,7 @@ public final class StarWarsAPI {
     
     func getResource<T: Decodable>(at url: URL) -> AnyPublisher<T, Error> {
         URLSession.shared.dataTaskPublisher(for: url)
-            .tryMap { result in
+            .tryMap { [weak self] result in
                 
                 guard let response = result.response as? HTTPURLResponse else {
                     throw StarWarsAPIError.invalidResponse(result.response)
@@ -57,6 +59,10 @@ public final class StarWarsAPI {
                 
                 guard (200...299).contains(response.statusCode) else {
                     throw StarWarsAPIError.httpError(response.statusCode)
+                }
+                
+                if self?.isLogResponseDataEnabled ?? false {
+                    print(String(data: result.data, encoding: .utf8) ?? "<none>")
                 }
                 
                 return try JSONDecoder().decode(T.self, from: result.data)

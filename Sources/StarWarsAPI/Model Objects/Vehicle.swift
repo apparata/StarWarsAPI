@@ -1,6 +1,8 @@
 
 import Foundation
 
+public typealias VehicleID = Int
+
 ///
 /// See https://swapi.dev/documentation#vehicles for details.
 ///

@@ -1,6 +1,8 @@
 
 import Foundation
 
+public typealias PlanetID = Int
+
 ///
 /// See https://swapi.dev/documentation#planets for details.
 ///

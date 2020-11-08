@@ -1,6 +1,8 @@
 
 import Foundation
 
+public typealias SpeciesID = Int
+
 ///
 /// See https://swapi.dev/documentation#species for details.
 ///
